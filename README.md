@@ -1,4 +1,6 @@
 #Versión 1 generada por Sergio
+#Versión 1 verificada por Carles
+#Versión 1 comunicada por Nicolai
 #Enlace url V1: https://youtu.be/-IKvCtT3EUA
 
 #Versión 2 generada por Nicolai
