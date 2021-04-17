@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1
         //    //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
         //    //al que deseamos conectarnos
         //    IPAddress direc = IPAddress.Parse("192.168.56.102");
-        //    IPEndPoint ipep = new IPEndPoint(direc, 9070);
+        //    IPEndPoint ipep = new IPEndPoint(direc, 9090);
 
         //    //Creamos el socket 
         //    server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -117,7 +117,7 @@ namespace WindowsFormsApplication1
         //    }
         //}
 
-        private void button3_Click(object sender, EventArgs e)
+        public void Desconectar()
         {
             //Enviar mensaje de desconexión
             string mensaje = "0/" + textnombre.Text;
@@ -129,6 +129,11 @@ namespace WindowsFormsApplication1
             this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Desconectar();
             Close();
         }
 
@@ -139,7 +144,7 @@ namespace WindowsFormsApplication1
                 //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
                 //al que deseamos conectarnos
                 IPAddress direc = IPAddress.Parse("192.168.56.102");
-                IPEndPoint ipep = new IPEndPoint(direc, 9070);
+                IPEndPoint ipep = new IPEndPoint(direc, 9010);
 
                 //Creamos el socket 
                 server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -166,7 +171,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(mensaje);
                 
                 
-                //Una vez regitrados nos desconectamos para evitar error en el login
+                //Una vez registrados nos desconectamos para evitar error en el login
                 mensaje = "0/" + textnombre.Text;
 
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -186,17 +191,15 @@ namespace WindowsFormsApplication1
             if ((textnombre.Text != "") && (textcontra.Text != ""))
             {
                 //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-                //al que deseamos conectarnos
+                //Al que deseamos conectarnos
                 IPAddress direc = IPAddress.Parse("192.168.56.102");
-                IPEndPoint ipep = new IPEndPoint(direc, 9070);
+                IPEndPoint ipep = new IPEndPoint(direc, 9010);
 
                 //Creamos el socket 
                 server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 try
                 {
                     server.Connect(ipep);//Intentamos conectar el socket
-                    this.BackColor = Color.Green;
-                    MessageBox.Show("Conectado");
                 }
                 catch (SocketException)
                 {
@@ -217,6 +220,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show(mensaje);
                 if (mensaje == "Has entrado correctamente")
                 {
+                    this.BackColor = Color.Green;
+                    MessageBox.Show("Conectado");
                     textnombre.Text = null;
                     textcontra.Text = null;
                     textnombre.Visible = false;
@@ -233,6 +238,13 @@ namespace WindowsFormsApplication1
                     label2.Visible = true;
                     button3.Visible = true;
                     button2.Visible = true;
+                    muestraconectados.Visible = true;
+                    MostrarConectados.Visible = true;
+                    salir.Visible = false;
+                }
+                if (mensaje == "El usuario no esta registrado o has introducido mal los datos")
+                {
+                    Desconectar();
                 }
             }
             else
@@ -248,6 +260,7 @@ namespace WindowsFormsApplication1
 
         private void muestraconectados_Click(object sender, EventArgs e)
         {
+            MostrarConectados.Rows.Clear();
             // Rellenar datagrid
             string mensaje = "7/";
             // Enviamos al servidor el nombre tecleado
@@ -258,7 +271,53 @@ namespace WindowsFormsApplication1
             byte[] msg2 = new byte[300]; //Tambien sera un vector de bytes la respuesta
             server.Receive(msg2);
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0]; //Cortar por final de string
-            MessageBox.Show(mensaje);
+            string phrase = mensaje;
+            string[] words = phrase.Split(',');
+
+            int i;
+            for (i = 0; i < words.Length - 1; i++)
+            {
+                words[i] = words[i + 1];
+                words[i + 1] = null;
+            }
+
+            foreach (var word in words)
+            {
+                int n = MostrarConectados.Rows.Add();
+                MostrarConectados.Rows[n].Cells[0].Value = word;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("¿Estás seguro de cerrar el programa?","Exit",MessageBoxButtons.OK);
+            if (dialog == DialogResult.OK)
+            {
+                //Desconectar();
+                Application.Exit();
+            }
+            else if (dialog == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        //Desactivar el botón de cerrado
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            Close();
         }
     }
 }

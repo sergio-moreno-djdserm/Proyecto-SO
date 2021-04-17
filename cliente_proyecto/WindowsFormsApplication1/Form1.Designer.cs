@@ -32,6 +32,7 @@
             this.nombre = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.salir = new System.Windows.Forms.Button();
             this.muestraconectados = new System.Windows.Forms.Button();
             this.MostrarConectados = new System.Windows.Forms.DataGridView();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +88,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.groupBox1.Controls.Add(this.salir);
             this.groupBox1.Controls.Add(this.muestraconectados);
             this.groupBox1.Controls.Add(this.MostrarConectados);
             this.groupBox1.Controls.Add(this.consulta4);
@@ -113,6 +115,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Peticion";
             // 
+            // salir
+            // 
+            this.salir.Location = new System.Drawing.Point(434, 464);
+            this.salir.Name = "salir";
+            this.salir.Size = new System.Drawing.Size(103, 29);
+            this.salir.TabIndex = 26;
+            this.salir.Text = "Salir";
+            this.salir.UseVisualStyleBackColor = true;
+            this.salir.Click += new System.EventHandler(this.button4_Click);
+            // 
             // muestraconectados
             // 
             this.muestraconectados.Location = new System.Drawing.Point(840, 306);
@@ -121,6 +133,7 @@
             this.muestraconectados.TabIndex = 25;
             this.muestraconectados.Text = "Muestra conectados";
             this.muestraconectados.UseVisualStyleBackColor = true;
+            this.muestraconectados.Visible = false;
             this.muestraconectados.Click += new System.EventHandler(this.muestraconectados_Click);
             // 
             // MostrarConectados
@@ -133,6 +146,7 @@
             this.MostrarConectados.RowTemplate.Height = 24;
             this.MostrarConectados.Size = new System.Drawing.Size(240, 278);
             this.MostrarConectados.TabIndex = 24;
+            this.MostrarConectados.Visible = false;
             this.MostrarConectados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MostrarConectados_CellContentClick);
             // 
             // Usuario
@@ -281,6 +295,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -310,6 +325,7 @@
         private System.Windows.Forms.DataGridView MostrarConectados;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.Button muestraconectados;
+        private System.Windows.Forms.Button salir;
     }
 }
 
