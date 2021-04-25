@@ -1,15 +1,15 @@
-#**Versión 1**
+**Versión 1**
 
-#Versión 1 generada por Sergio 
+- Versión 1 generada por Sergio 
 
-#Versión 1 verificada por Carle 
+- Versión 1 verificada por Carle 
 
-#Versión 1 comunicada por Nicolai
+- Versión 1 comunicada por Nicolai
 
-#Enlace url V1: https://youtu.be/-IKvCtT3EUA
+- Enlace url V1: https://youtu.be/-IKvCtT3EUA
 
 
-#**Versión 2**
+**Versión 2**
 
 - Versión 2 generada por Nicolai
 
