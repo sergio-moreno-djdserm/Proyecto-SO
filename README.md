@@ -2,7 +2,7 @@
 
 - Versión 1 generada por Sergio 
 
-- Versión 1 verificada por Carle 
+- Versión 1 verificada por Carles 
 
 - Versión 1 comunicada por Nicolai
 
