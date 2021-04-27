@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.TextBox();
+            this.nameconsulta = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.salir = new System.Windows.Forms.Button();
-            this.muestraconectados = new System.Windows.Forms.Button();
             this.MostrarConectados = new System.Windows.Forms.DataGridView();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.consulta4 = new System.Windows.Forms.RadioButton();
@@ -56,40 +55,36 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(67, 278);
+            this.label2.Location = new System.Drawing.Point(326, 211);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre";
-            this.label2.Visible = false;
             // 
-            // nombre
+            // nameconsulta
             // 
-            this.nombre.Location = new System.Drawing.Point(190, 278);
-            this.nombre.Margin = new System.Windows.Forms.Padding(4);
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(232, 22);
-            this.nombre.TabIndex = 3;
-            this.nombre.Visible = false;
+            this.nameconsulta.Location = new System.Drawing.Point(415, 214);
+            this.nameconsulta.Margin = new System.Windows.Forms.Padding(4);
+            this.nameconsulta.Name = "nameconsulta";
+            this.nameconsulta.Size = new System.Drawing.Size(232, 22);
+            this.nameconsulta.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(434, 429);
+            this.button2.Location = new System.Drawing.Point(415, 244);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 28);
+            this.button2.Size = new System.Drawing.Size(152, 56);
             this.button2.TabIndex = 5;
             this.button2.Text = "Enviar";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.groupBox1.Controls.Add(this.salir);
-            this.groupBox1.Controls.Add(this.muestraconectados);
             this.groupBox1.Controls.Add(this.MostrarConectados);
             this.groupBox1.Controls.Add(this.consulta4);
             this.groupBox1.Controls.Add(this.label3);
@@ -105,7 +100,7 @@
             this.groupBox1.Controls.Add(this.consulta1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.nombre);
+            this.groupBox1.Controls.Add(this.nameconsulta);
             this.groupBox1.Location = new System.Drawing.Point(16, 34);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -117,24 +112,13 @@
             // 
             // salir
             // 
-            this.salir.Location = new System.Drawing.Point(434, 464);
+            this.salir.Location = new System.Drawing.Point(614, 492);
             this.salir.Name = "salir";
-            this.salir.Size = new System.Drawing.Size(103, 29);
+            this.salir.Size = new System.Drawing.Size(232, 38);
             this.salir.TabIndex = 26;
             this.salir.Text = "Salir";
             this.salir.UseVisualStyleBackColor = true;
             this.salir.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // muestraconectados
-            // 
-            this.muestraconectados.Location = new System.Drawing.Point(840, 306);
-            this.muestraconectados.Name = "muestraconectados";
-            this.muestraconectados.Size = new System.Drawing.Size(173, 38);
-            this.muestraconectados.TabIndex = 25;
-            this.muestraconectados.Text = "Muestra conectados";
-            this.muestraconectados.UseVisualStyleBackColor = true;
-            this.muestraconectados.Visible = false;
-            this.muestraconectados.Click += new System.EventHandler(this.muestraconectados_Click);
             // 
             // MostrarConectados
             // 
@@ -146,7 +130,6 @@
             this.MostrarConectados.RowTemplate.Height = 24;
             this.MostrarConectados.Size = new System.Drawing.Size(240, 278);
             this.MostrarConectados.TabIndex = 24;
-            this.MostrarConectados.Visible = false;
             this.MostrarConectados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MostrarConectados_CellContentClick);
             // 
             // Usuario
@@ -162,16 +145,14 @@
             this.consulta4.Name = "consulta4";
             this.consulta4.Size = new System.Drawing.Size(347, 21);
             this.consulta4.TabIndex = 23;
-            this.consulta4.TabStop = true;
             this.consulta4.Text = "Dame el número de partidas que ganó tal persona";
             this.consulta4.UseVisualStyleBackColor = true;
-            this.consulta4.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 400);
+            this.label3.Location = new System.Drawing.Point(260, 468);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 25);
@@ -182,7 +163,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 361);
+            this.label1.Location = new System.Drawing.Point(260, 429);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 25);
@@ -191,7 +172,7 @@
             // 
             // textcontra
             // 
-            this.textcontra.Location = new System.Drawing.Point(157, 404);
+            this.textcontra.Location = new System.Drawing.Point(401, 472);
             this.textcontra.Margin = new System.Windows.Forms.Padding(4);
             this.textcontra.Name = "textcontra";
             this.textcontra.Size = new System.Drawing.Size(166, 22);
@@ -199,7 +180,7 @@
             // 
             // textnombre
             // 
-            this.textnombre.Location = new System.Drawing.Point(157, 365);
+            this.textnombre.Location = new System.Drawing.Point(401, 433);
             this.textnombre.Margin = new System.Windows.Forms.Padding(4);
             this.textnombre.Name = "textnombre";
             this.textnombre.Size = new System.Drawing.Size(166, 22);
@@ -207,7 +188,7 @@
             // 
             // entrar
             // 
-            this.entrar.Location = new System.Drawing.Point(489, 365);
+            this.entrar.Location = new System.Drawing.Point(733, 433);
             this.entrar.Name = "entrar";
             this.entrar.Size = new System.Drawing.Size(113, 38);
             this.entrar.TabIndex = 18;
@@ -217,7 +198,7 @@
             // 
             // registrar
             // 
-            this.registrar.Location = new System.Drawing.Point(370, 365);
+            this.registrar.Location = new System.Drawing.Point(614, 433);
             this.registrar.Name = "registrar";
             this.registrar.Size = new System.Drawing.Size(113, 38);
             this.registrar.TabIndex = 17;
@@ -233,10 +214,8 @@
             this.consulta3.Name = "consulta3";
             this.consulta3.Size = new System.Drawing.Size(328, 21);
             this.consulta3.TabIndex = 16;
-            this.consulta3.TabStop = true;
             this.consulta3.Text = "Dame el tiempo total que ha jugado tal persona";
             this.consulta3.UseVisualStyleBackColor = true;
-            this.consulta3.Visible = false;
             // 
             // consulta2
             // 
@@ -246,11 +225,9 @@
             this.consulta2.Name = "consulta2";
             this.consulta2.Size = new System.Drawing.Size(589, 21);
             this.consulta2.TabIndex = 15;
-            this.consulta2.TabStop = true;
             this.consulta2.Text = "Dame la ID de la partida, la duración y el ganador de las partidas donde jugó tal" +
                 " persona";
             this.consulta2.UseVisualStyleBackColor = true;
-            this.consulta2.Visible = false;
             // 
             // button3
             // 
@@ -260,7 +237,6 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "Desconectar";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
@@ -281,10 +257,8 @@
             this.consulta1.Name = "consulta1";
             this.consulta1.Size = new System.Drawing.Size(411, 21);
             this.consulta1.TabIndex = 8;
-            this.consulta1.TabStop = true;
             this.consulta1.Text = "Dame la ID de la partida y los puntos donde jugó tal persona";
             this.consulta1.UseVisualStyleBackColor = true;
-            this.consulta1.Visible = false;
             // 
             // Form1
             // 
@@ -307,7 +281,7 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.TextBox nameconsulta;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton consulta1;
@@ -324,7 +298,6 @@
         private System.Windows.Forms.RadioButton consulta4;
         private System.Windows.Forms.DataGridView MostrarConectados;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
-        private System.Windows.Forms.Button muestraconectados;
         private System.Windows.Forms.Button salir;
     }
 }
