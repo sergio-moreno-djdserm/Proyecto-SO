@@ -20,4 +20,11 @@
 - Enlace url V2: https://youtu.be/Sk1tRdpDYTo
 
 - Enlace video interfaz grafica en V2: https://youtu.be/Cp0LnSafXY0
-a
+
+**Versión 3**
+
+- Versión 2 generada por Carles
+
+- Versión 2 verificada por Nicolai
+
+- Versión 2 comunicada por Sergio
