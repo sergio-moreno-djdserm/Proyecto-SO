@@ -23,12 +23,20 @@
 
 **Versión 3**
 
-- Versión 2 generada por Carles
+- Versión 3 generada por Carles
 
-- Versión 2 verificada por Nicolai
+- Versión 3 verificada por Nicolai
 
-- Versión 2 comunicada por Sergio
+- Versión 3 comunicada por Sergio
 
 - Enlace url V3: https://youtu.be/EOfC5tPqEvI
 
-.
+**Versión 4**
+
+- Versión 4 generada por Sergio
+
+- Versión 4 verificada por Carles
+
+- Versión 4 comunicada por Nicolai
+
+- Enlace url V4:
