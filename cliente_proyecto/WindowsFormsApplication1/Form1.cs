@@ -20,6 +20,13 @@ namespace WindowsFormsApplication1
         string name;
         string password;
 
+        string[] jugadores = new string[3]; //Añadir la lista de invitados
+        int num_seleccionados = 0;  //Contar cuantos invitados
+        //int num_conectados;
+
+        List<Form2> Forms = new List<Form2>();
+        int[] partidas = new int[100];  //Relacionar los form con la ID de la partida
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +36,14 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             HacerInvisible();
+        }
+
+        public void AbrirForm2(int id)
+        {
+            partidas[id] = Forms.Count();
+            Form2 f2 = new Form2(id);
+            Forms.Add(f2);
+            f2.ShowDialog();
         }
 
         public void Conectar()
@@ -59,7 +74,7 @@ namespace WindowsFormsApplication1
         public void Desconectar()
         {
             //Enviar mensaje de desconexión
-            string mensaje = "0/" + name;
+            string mensaje = "0/0/" + name;
 
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -81,6 +96,7 @@ namespace WindowsFormsApplication1
             label2.Visible = false;
             button3.Visible = false;
             button2.Visible = false;
+            Invitar.Visible = false;
             MostrarConectados.Visible = false;
         }
 
@@ -101,6 +117,7 @@ namespace WindowsFormsApplication1
             label2.Visible = true;
             button3.Visible = true;
             button2.Visible = true;
+            Invitar.Visible = true;
             MostrarConectados.Visible = true;
         }
 
@@ -113,8 +130,10 @@ namespace WindowsFormsApplication1
                 server.Receive(msg2);
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('/'); //Cortar por final de string
                 int codigo = Convert.ToInt32(trozos[0]);
+                int idPartida = Convert.ToInt32(trozos[1]);
                 string mensaje;
-                mensaje = trozos[1].Split('\0')[0];
+                mensaje = trozos[2].Split('\0')[0];
+                //MessageBox.Show(Convert.ToString(codigo));
 
                 switch (codigo)
                 {
@@ -205,6 +224,38 @@ namespace WindowsFormsApplication1
                             MostrarConectados.Rows[n].Cells[0].Value = word;
                         }
                         break;
+                    case 8:
+                        if (mensaje == "NO")
+                            MessageBox.Show("No se ha podido crear la partida, estas en la FRIENDZONE");
+                        else
+                        {
+                            string[] partida = mensaje.Split(',');
+                            string pregunta = "Quieres unirte a una partida con " + partida[1];
+
+                            DialogResult resultado = MessageBox.Show(pregunta,"Nueva partida",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                            if (resultado == DialogResult.Yes)
+                                mensaje = "8/0/" + partida[0] + "," + name + ",YES";
+                            else
+                                mensaje = "8/0/" + partida[0] + "," + name + ",NO";
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                            server.Send(msg);
+                        }
+                        break;
+                    case 9:
+                        //MessageBox.Show("Estoy dentro del caso 9");
+                        trozos = mensaje.Split('-');
+                        string [] auxiliar = trozos[0].Split(',');
+                        //MessageBox.Show(Convert.ToString(aux[0]));
+                        if (auxiliar[0] == "YES")
+                        {
+                            idPartida = Convert.ToInt32(auxiliar[1]);
+                            ThreadStart ts = delegate { AbrirForm2(idPartida); };
+                            Thread atender = new Thread(ts);
+                            atender.Start();
+                        }
+                        else
+                            MessageBox.Show("Estas en la FRIENDZONE");
+                        break;
                 }
             }
         }
@@ -217,7 +268,7 @@ namespace WindowsFormsApplication1
                 {
                     // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
                     // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "3/" + nameconsulta.Text;
+                    string mensaje = "3/0/" + nameconsulta.Text;
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
                     server.Send(msg);
@@ -226,7 +277,7 @@ namespace WindowsFormsApplication1
                 {
                     // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
                     // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "4/" + nameconsulta.Text;
+                    string mensaje = "4/0/" + nameconsulta.Text;
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
                     server.Send(msg);
@@ -235,7 +286,7 @@ namespace WindowsFormsApplication1
                 {
                     // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
                     // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "5/" + nameconsulta.Text;
+                    string mensaje = "5/0/" + nameconsulta.Text;
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
                     server.Send(msg);
@@ -244,7 +295,7 @@ namespace WindowsFormsApplication1
                 {
                     // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
                     // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "6/" + nameconsulta.Text;
+                    string mensaje = "6/0/" + nameconsulta.Text;
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
                     server.Send(msg);
@@ -269,7 +320,7 @@ namespace WindowsFormsApplication1
             {
                 Conectar();
                 // El usuario se quiere registrar
-                string mensaje = "1/" + textnombre.Text + "/" + textcontra.Text;
+                string mensaje = "1/0/" + textnombre.Text + "/" + textcontra.Text;
                 name = textnombre.Text;
                 password = textcontra.Text;
                 // Enviamos al servidor el nombre tecleado
@@ -288,7 +339,7 @@ namespace WindowsFormsApplication1
             {
                 Conectar();
                 // El usuario quiere entrar
-                string mensaje = "2/" + textnombre.Text + "/" + textcontra.Text;
+                string mensaje = "2/0/" + textnombre.Text + "/" + textcontra.Text;
                 name = textnombre.Text;
                 password = textcontra.Text;
                 // Enviamos al servidor el nombre tecleado
@@ -303,7 +354,37 @@ namespace WindowsFormsApplication1
 
         private void MostrarConectados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (MostrarConectados.CurrentCell.Value != null)
+            {
+                string selecionado = MostrarConectados.CurrentCell.Value.ToString(); //Recoge el nombre de la celda
+                MessageBox.Show(selecionado);
+                if (selecionado != name) //Solo permitimos selecionar las que no son el propio usuario
+                {
+                    if (num_seleccionados == 3)
+                        MessageBox.Show("Has alcanzado el máximo permitido de jugadores");
 
+                    else if ((selecionado != jugadores[0]) && (selecionado != jugadores[1]) && (selecionado != jugadores[2])) //Si aun no la hemos selecionado la añadimos
+                    {
+                        jugadores[num_seleccionados] = selecionado;
+                        num_seleccionados++;
+                    }
+                    else //Deselecionamos al jugador
+                    {
+                        bool encontrado = false;
+                        for (int i = 0; i < num_seleccionados; i++)
+                        {
+                            if (jugadores[i] == selecionado)
+                                encontrado = true;
+                            if (encontrado)
+                                jugadores[i] = jugadores[i + 1];
+                        }
+                        num_seleccionados--;
+                    }
+                    selecionado = "";
+                    for (int i = 0; i < num_seleccionados; i++)
+                        selecionado = selecionado + jugadores[i] + ",";
+                }
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -334,8 +415,35 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Desconectar();
             Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Invitar_Click(object sender, EventArgs e)
+        {
+            // Enviamos al servidor el nombre del usuario más sus invitados
+            string mensaje = "7/0/" + name + ",";
+            if (num_seleccionados > 0)
+            {
+                for (int i = 0; i < num_seleccionados; i++)
+                {
+                    mensaje = mensaje + jugadores[i] + ",";
+                }
+                //MessageBox.Show(mensaje);
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+            }
+            else
+                MessageBox.Show("Debes de seleccionar a un jugador");
+
+            //Limpiamos el vector de jugadores
+            num_seleccionados = 0;
+            for (int i = 0; i < 3; i++)
+                jugadores[i] = "";
         }
     }
 }

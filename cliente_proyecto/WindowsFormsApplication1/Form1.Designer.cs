@@ -47,6 +47,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.consulta1 = new System.Windows.Forms.RadioButton();
+            this.Invitar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MostrarConectados)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +85,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.groupBox1.Controls.Add(this.Invitar);
             this.groupBox1.Controls.Add(this.salir);
             this.groupBox1.Controls.Add(this.MostrarConectados);
             this.groupBox1.Controls.Add(this.consulta4);
@@ -248,6 +250,7 @@
             this.button1.Text = "Conectar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // consulta1
             // 
@@ -259,6 +262,16 @@
             this.consulta1.TabIndex = 8;
             this.consulta1.Text = "Dame la ID de la partida y los puntos donde jugó tal persona";
             this.consulta1.UseVisualStyleBackColor = true;
+            // 
+            // Invitar
+            // 
+            this.Invitar.Location = new System.Drawing.Point(773, 306);
+            this.Invitar.Name = "Invitar";
+            this.Invitar.Size = new System.Drawing.Size(161, 46);
+            this.Invitar.TabIndex = 27;
+            this.Invitar.Text = "Invitar";
+            this.Invitar.UseVisualStyleBackColor = true;
+            this.Invitar.Click += new System.EventHandler(this.Invitar_Click);
             // 
             // Form1
             // 
@@ -299,6 +312,7 @@
         private System.Windows.Forms.DataGridView MostrarConectados;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.Button salir;
+        private System.Windows.Forms.Button Invitar;
     }
 }
 
