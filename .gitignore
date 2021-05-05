@@ -33,21 +33,6 @@
 *.so.*
 *.dylib
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-*.bin
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
 # Kernel Module Compile Results
 *.mod*
 *.cmd
@@ -77,7 +62,6 @@ dkms.conf
 mono_crash.*
 
 # Build results
-[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -87,7 +71,6 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
