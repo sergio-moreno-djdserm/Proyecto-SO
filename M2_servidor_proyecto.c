@@ -428,7 +428,7 @@ void  DameConsulta4(char respuesta[700], char nombre[50], MYSQL *conn) {
 	printf("CONSULTA 4 RESPUESTA: %s",respuesta);
 }
 
-//Función Versión 5
+//Función Versión 5, para rellenar mensajes en el chat
 void MensajesChat(char mensaje[700], int idPartida) {
 	printf("Respuestade chat - %s\n",mensaje);
 	char notificacion[700];
