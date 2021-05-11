@@ -428,6 +428,16 @@ void  DameConsulta4(char respuesta[700], char nombre[50], MYSQL *conn) {
 	printf("CONSULTA 4 RESPUESTA: %s",respuesta);
 }
 
+//Función Versión 5
+void MensajesChat(char mensaje[700], int idPartida) {
+	printf("Respuestade chat - %s\n",mensaje);
+	char notificacion[700];
+	sprintf(notificacion,"10/%d/%s",idPartida,mensaje);
+	for (int i=0; i<Partidas.ListaPartidas[idPartida].num;i++) {
+		write(Partidas.ListaPartidas[idPartida].partida_jugadores[i].socket,notificacion,strlen(notificacion));
+	}
+}
+
 void *AtenderCliente(void *socket)
 {
 	int sock_conn;
@@ -569,9 +579,14 @@ void *AtenderCliente(void *socket)
 				RespuestaInvitacion(p);
 			}
 			
-			if ((codigo!=0) && (codigo!=7) && (codigo!=8)) {
+			else if (codigo==9) {
+				p=strtok(NULL,"/");
+				MensajesChat(p,num_form);
+			}
+			
+			if ((codigo!=0) && (codigo!=7) && (codigo!=8) && (codigo!=9)) {
 				write(sock_conn,respuesta,strlen(respuesta));
-				printf("RESPUESTA SI CODIGO != 0 o 7 o 8: %s\n",respuesta);
+				printf("RESPUESTA SI CODIGO != 0 o 7 o 8 o 9: %s\n",respuesta);
 			}
 		}
 	}

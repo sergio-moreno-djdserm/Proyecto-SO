@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -14,10 +17,18 @@ namespace WindowsFormsApplication1
         int segundos = 0;
         int player_pos;
         int bomb_pos;
+        int idPartida;
+        Socket server;
+        string name;
 
-        public Form2(int id)
+        public Form2(int id, Socket server, string name)
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+            this.idPartida = id;
+            this.server = server;
+            this.name = name;
+            label1.Text = Convert.ToString(idPartida);
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -28,6 +39,19 @@ namespace WindowsFormsApplication1
         private void timer1_Tick(object sender, EventArgs e)
         {
             segundos = segundos + 1;
+        }
+
+        private void chatbutton_Click(object sender, EventArgs e)
+        {
+            string mensaje = "9/" + idPartida + "/" + name + " : " + chatbox.Text;
+            chatbox.Text = "";
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
+
+        public void RellenaChat(string mensaje)
+        {
+            chat.Items.Insert(0,mensaje);
         }
 
         //Permitir al jugador pulsar o no a un botón y cada vez que el jugador cambie de boton, se le enviará al servidor su nueva posición

@@ -27,10 +27,13 @@ namespace WindowsFormsApplication1
         List<Form2> Forms = new List<Form2>();
         int[] partidas = new int[100];  //Relacionar los form con la ID de la partida
 
+        delegate void DelegadoParaEscribir();
+        delegate void DelegadoParaRellenar(string []mensaje);
+
         public Form1()
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false; //Necesario para que los elementos de los formularios puedan ser accedidos desde threads diferentes a los que se crearon
+            //CheckForIllegalCrossThreadCalls = false; //Necesario para que los elementos de los formularios puedan ser accedidos desde threads diferentes a los que se crearon
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,7 +44,7 @@ namespace WindowsFormsApplication1
         public void AbrirForm2(int id)
         {
             partidas[id] = Forms.Count();
-            Form2 f2 = new Form2(id);
+            Form2 f2 = new Form2(id,server,name);
             Forms.Add(f2);
             f2.ShowDialog();
         }
@@ -119,6 +122,29 @@ namespace WindowsFormsApplication1
             button2.Visible = true;
             Invitar.Visible = true;
             MostrarConectados.Visible = true;
+            this.BackColor = Color.Green;
+        }
+
+        public void DarNombreContra()
+        {
+            name = textnombre.Text;
+            password = textcontra.Text;
+        }
+
+        public void RellenaListaConectados(string []words)
+        {
+            MostrarConectados.Rows.Clear();
+            int i;
+            for (i = 0; i < words.Length - 1; i++)
+            {
+                words[i] = words[i + 1];
+                words[i + 1] = null;
+            }
+            foreach (var word in words)
+            {
+                int n = MostrarConectados.Rows.Add();
+                MostrarConectados.Rows[n].Cells[0].Value = word;
+            }
         }
 
         private void AtenderServidor()
@@ -157,10 +183,10 @@ namespace WindowsFormsApplication1
                     case 2: //Login
                         if (mensaje == "OK")
                         {
-                            name = textnombre.Text;
-                            password = textcontra.Text;
-                            HacerVisible();
-                            this.BackColor = Color.Green;
+                            DelegadoParaEscribir delegado = new DelegadoParaEscribir(DarNombreContra);
+                            this.Invoke(delegado, new object[] {});
+                            DelegadoParaEscribir delegado2 = new DelegadoParaEscribir(HacerVisible);
+                            this.Invoke(delegado2, new object[] { });
                             MessageBox.Show("Conectado");
                         }
                         else
@@ -211,18 +237,8 @@ namespace WindowsFormsApplication1
                         break;
                     case 7:
                         string[] words = mensaje.Split(',');
-                        MostrarConectados.Rows.Clear();
-                        int i;
-                        for (i = 0; i < words.Length - 1; i++)
-                        {
-                            words[i] = words[i + 1];
-                            words[i + 1] = null;
-                        }
-                        foreach (var word in words)
-                        {
-                            int n = MostrarConectados.Rows.Add();
-                            MostrarConectados.Rows[n].Cells[0].Value = word;
-                        }
+                        DelegadoParaRellenar delegado3 = new DelegadoParaRellenar(RellenaListaConectados);
+                        this.Invoke(delegado3, new object[] {words});
                         break;
                     case 8:
                         if (mensaje == "NO")
@@ -255,6 +271,9 @@ namespace WindowsFormsApplication1
                         }
                         else
                             MessageBox.Show("Estas en la FRIENDZONE");
+                        break;
+                    case 10:
+                        Forms[partidas[idPartida]].RellenaChat(mensaje);
                         break;
                 }
             }
