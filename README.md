@@ -50,3 +50,13 @@
 - Versión 5 comunicada por Carles
 
 - Enlace url V5: https://youtu.be/d0WCViyhffE
+
+**Versión 6: FINAL**
+
+- Versión 6 generada por Nicolai
+
+- Versión 6 verificada por Carles
+
+- Versión 6 comunicada por Sergio
+
+- Enlace url V6: https://youtu.be/d0WCViyhffE
