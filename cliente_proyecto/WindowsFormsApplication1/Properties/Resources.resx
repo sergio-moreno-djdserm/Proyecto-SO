@@ -118,19 +118,196 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="swall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\swall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BOMBA_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\BOMBA_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="suelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\suelo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MURO_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="swall1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\swall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CESPED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\CESPED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="swall2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\swall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PRINCIPAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\drive-download-20210609T135747Z-001\FONDOS\PRINCIPAL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="persona" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\persona.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BOMBA_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\BOMBA_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FLECHA_ABAJO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\TERRENO\FLECHA_ABAJO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_MUROS_CIELO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\drive-download-20210609T135747Z-001\FONDOS\FONDO_MUROS-CIELO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AGUJERO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\TERRENO\AGUJERO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FLECHA_DERECHA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\TERRENO\FLECHA_DERECHA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_TABLERO4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDO_TABLERO4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_TABLERO1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDO_TABLERO1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VICTORIA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\VICTORIA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BOMBA_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\BOMBA_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINION_VERDE_FRENTE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\MINION_VERDE_FRENTE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EXPLOSION_IZQUIERDA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\EXPLOSION_IZQUIERDA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FLECHA_ARRIBA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\TERRENO\FLECHA_ARRIBA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CENIZAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\TERRENO\CENIZAS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VERDE_BOMBA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\drive-download-20210609T135747Z-001\VERDE_BOMBA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_MUROS_CIELO_SEPIA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\drive-download-20210609T135747Z-001\FONDO_MUROS-CIELO_SEPIA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_LABEL7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDO_LABEL7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PONER_BOMBA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\TERRENO\PONER_BOMBA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PANELES_CON_FONDO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\drive-download-20210609T135747Z-001\FONDOS\PANELES_CON_FONDO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_TABLERO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDO_TABLERO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EXPLOSION_DERECHA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\EXPLOSION_DERECHA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINION_AMARILLO_FRENTE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MINIONS\MINION_AMARILLO_FRENTE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EXPLOSION_ABAJO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\EXPLOSION_ABAJO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ROJO_BOMBA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\drive-download-20210609T135747Z-001\ROJO_BOMBA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PANELES_CON_FONDO_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PANELES_CON_FONDO_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINION_ROJO_FRENTE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MINIONS\MINION_ROJO_FRENTE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fondo_muros_cielo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\fondo_muros-cielo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_TABLERO3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDO_TABLERO3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EXPLOSION_CENTRO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\EXPLOSION_CENTRO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FLECHA_IZQUIERDA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\TERRENO\FLECHA_IZQUIERDA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DERROTA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\DERROTA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_TABLERO2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDO_TABLERO2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINION_VERDE_FRENTE1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MINIONS\MINION_VERDE_FRENTE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BOMBA_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\BOMBA_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MINION_AZUL_FRENTE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MINIONS\MINION_AZUL_FRENTE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EXPLOSION_ARRIBA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\EXPLOSION_ARRIBA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PANELES_CON_FONDO1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PANELES_CON_FONDO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MURO_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\MUROS\MURO_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BOMBA_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\GRAFICOS\BOMBA\BOMBA_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FONDO_LADRILLOS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDO_LADRILLOS.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

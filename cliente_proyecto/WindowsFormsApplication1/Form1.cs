@@ -29,6 +29,12 @@ namespace WindowsFormsApplication1
 
         delegate void DelegadoParaEscribir();
         delegate void DelegadoParaRellenar(string []mensaje);
+        delegate void DelegadorParaEcribirRepuesta(string mensaje);
+
+        private void Mensaje_Respuesta(string respuesta)
+        {
+            label7.Text=respuesta;
+        }
 
         public Form1()
         {
@@ -36,8 +42,9 @@ namespace WindowsFormsApplication1
             //CheckForIllegalCrossThreadCalls = false; //Necesario para que los elementos de los formularios puedan ser accedidos desde threads diferentes a los que se crearon
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) 
         {
+            groupBox1.BackgroundImage = Properties.Resources.PRINCIPAL;
             HacerInvisible();
         }
 
@@ -89,7 +96,7 @@ namespace WindowsFormsApplication1
             server.Close();
         }
 
-        public void HacerInvisible()
+        public void HacerInvisible() //Vuelve invisible ciertos elementos una vez que el usuario inicia sesión
         {
             consulta1.Visible = false;
             consulta2.Visible = false;
@@ -99,11 +106,22 @@ namespace WindowsFormsApplication1
             label2.Visible = false;
             button3.Visible = false;
             button2.Visible = false;
+            label4.Visible = false;
             Invitar.Visible = false;
+            consulta5.Visible = false;
+            consulta6.Visible = false;
+            consulta7.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+            fechai.Visible = false;
+            fechaf.Visible = false;
             MostrarConectados.Visible = false;
+            label7.Visible = false;
+            panel1.Visible = false;
+            button4.Visible = false;
         }
 
-        public void HacerVisible()
+        public void HacerVisible() ////Vuelve visible ciertos elementos una vez que el usuario inicia sesión
         {
             textnombre.Visible = false;
             textcontra.Visible = false;
@@ -121,7 +139,20 @@ namespace WindowsFormsApplication1
             button3.Visible = true;
             button2.Visible = true;
             Invitar.Visible = true;
+            label4.Visible = true;
+            darbaja.Visible = false;
+            consulta5.Visible = true;
+            consulta6.Visible = true;
+            consulta7.Visible = true;
+            label5.Visible = true;
+            label6.Visible = true;
+            fechai.Visible = true;
+            fechaf.Visible = true;
+            label7.Visible = true;
+            panel1.Visible = true;
+            groupBox1.BackgroundImage = Properties.Resources.PANELES_CON_FONDO_2;
             MostrarConectados.Visible = true;
+            button4.Visible = true;
             this.BackColor = Color.Green;
         }
 
@@ -131,7 +162,7 @@ namespace WindowsFormsApplication1
             password = textcontra.Text;
         }
 
-        public void RellenaListaConectados(string []words)
+        public void RellenaListaConectados(string []words) //Rellena la lista de conectados con los usuarios que estan actualmente conectados y rellena el DataGridView.
         {
             MostrarConectados.Rows.Clear();
             int i;
@@ -147,14 +178,14 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void AtenderServidor()
+        private void AtenderServidor() //Funcion que esta constantemente a la espera de recibir un mensaje del servidor.
         {
             while (true)
             {
-                //Recibimos la respuesta del servidor
-                byte[] msg2 = new byte[700]; //Tambien sera un vector de bytes la respuesta
+                //Recibimos la respuesta del servidor.
+                byte[] msg2 = new byte[1500]; //Tambien sera un vector de bytes la respuesta.
                 server.Receive(msg2);
-                string[] trozos = Encoding.ASCII.GetString(msg2).Split('/'); //Cortar por final de string
+                string[] trozos = Encoding.ASCII.GetString(msg2).Split('/'); //Cortar por final de string.
                 int codigo = Convert.ToInt32(trozos[0]);
                 int idPartida = Convert.ToInt32(trozos[1]);
                 string mensaje;
@@ -187,68 +218,75 @@ namespace WindowsFormsApplication1
                             this.Invoke(delegado, new object[] {});
                             DelegadoParaEscribir delegado2 = new DelegadoParaEscribir(HacerVisible);
                             this.Invoke(delegado2, new object[] { });
-                            MessageBox.Show("Conectado");
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "~ CONECTADO ~" });
+                        }
+                        else if (mensaje == "YASESION")
+                        {
+                            MessageBox.Show("El usuario ya tiene una sesión iniciada");
+                            atender.Abort();
+                            this.BackColor = Color.Gray;
+                            server.Shutdown(SocketShutdown.Both);
+                            server.Close();
                         }
                         else
                         {
-                            MessageBox.Show("EL usuario no esta registrado");
-                            Desconectar();
+                            MessageBox.Show("El usuario no está registrado");
                         }
                         break;
-                    case 3:
+                    case 3: //No se han encontrados los datos introducidos por el ususario en la consulta.
                         if (mensaje != "ERROR_NO_DATOS")
                         {
-                            MessageBox.Show(mensaje);
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { mensaje });
                         }
                         else
                         {
-                            MessageBox.Show("No se han encontrado datos en la consulta");
+                            label7.Text="No se han encontrado datos en la consulta";
                         }
                         break;
-                    case 4:
+                    case 4: //No se han encontrados los datos introducidos por el ususario en la consulta.
                         if (mensaje != "ERROR_NO_DATOS")
                         {
-                            MessageBox.Show(mensaje);
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { mensaje });
                         }
                         else
                         {
-                            MessageBox.Show("No se han encontrado datos en la consulta");
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "No se han encontrado datos en la consulta" });
                         }
                         break;
-                    case 5:
+                    case 5: //No se han encontrados los datos introducidos por el ususario en la consulta.
                         if (mensaje != "ERROR_NO_DATOS")
                         {
-                            MessageBox.Show(mensaje);
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { mensaje });
                         }
                         else
                         {
-                            MessageBox.Show("No se han encontrado datos en la consulta");
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "No se han encontrado datos en la consulta" });
                         }
                         break;
-                    case 6:
+                    case 6: //No se han encontrados los datos introducidos por el ususario en la consulta.
                         if (mensaje != "ERROR_NO_DATOS")
                         {
-                            MessageBox.Show(mensaje);
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { mensaje });
                         }
                         else
                         {
-                            MessageBox.Show("No se han encontrado datos en la consulta");
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "No se han encontrado datos en la consulta" });
                         }
                         break;
-                    case 7:
+                    case 7: //Invoca la funcion RellenarListaConectados y le pasa como parametros los nombres de los conectados.
                         string[] words = mensaje.Split(',');
                         DelegadoParaRellenar delegado3 = new DelegadoParaRellenar(RellenaListaConectados);
                         this.Invoke(delegado3, new object[] {words});
                         break;
-                    case 8:
+                    case 8: //Al recibir la invitacion de alguien, puedes rechazarla, enviando un mensaje notificandolo,o bien acceptarla y empezar una partida con quien te invito y los demás jugadores que tambien accepten.
                         if (mensaje == "NO")
-                            MessageBox.Show("No se ha podido crear la partida, estas en la FRIENDZONE");
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "No se ha podido crear la partida, estas en la FRIENDZONE" });
                         else
                         {
                             string[] partida = mensaje.Split(',');
                             string pregunta = "Quieres unirte a una partida con " + partida[1];
 
-                            DialogResult resultado = MessageBox.Show(pregunta,"Nueva partida",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                            DialogResult resultado = MessageBox.Show(pregunta, "Nueva partida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (resultado == DialogResult.Yes)
                                 mensaje = "8/0/" + partida[0] + "," + name + ",YES";
                             else
@@ -257,7 +295,7 @@ namespace WindowsFormsApplication1
                             server.Send(msg);
                         }
                         break;
-                    case 9:
+                    case 9: //Todos los invitados han rechazado tu invitación, por lo tanto no puedes  jugar con nadie. Estas solo.
                         //MessageBox.Show("Estoy dentro del caso 9");
                         trozos = mensaje.Split('-');
                         string [] auxiliar = trozos[0].Split(',');
@@ -270,54 +308,150 @@ namespace WindowsFormsApplication1
                             atender.Start();
                         }
                         else
-                            MessageBox.Show("Estas en la FRIENDZONE");
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "Estas en la FRIENDZONE" });
                         break;
-                    case 10:
+                    case 10:    //Hace funcionar el chat
                         Forms[partidas[idPartida]].RellenaChat(mensaje);
+                        break;
+                    case 11:    //Darse de baja
+                        if (mensaje == "OK")
+                        {
+                            MessageBox.Show("Te has dado de baja correctamente");
+                            Desconectar();
+                        }
+                        else if (mensaje == "ERROR_AL_ELIMINAR")
+                        {
+                            MessageBox.Show("Ha sucedido un error en el proceso");
+                            Desconectar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El usuario no esta registrado");
+                            Desconectar();
+                        }
+                        break;
+                    case 12:    //Dibuja las posiciones de los jugadores.
+                        Forms[partidas[idPartida]].DibujaPosiciones(mensaje);
+                        break;
+                    case 13:    //Recibir mensaje del servidor diciendo si ha ganado, o ha perdido etc
+                        Forms[partidas[idPartida]].NotificarCambios(mensaje);
+                        break;
+                    case 14: //Notificacion de errores en las consultas.
+                        if (mensaje != "ERROR_NO_DATOS")
+                        {
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { mensaje });
+                        }
+                        else
+                        {
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "No se han encontrado datos en la consulta" });
+                        }
+                        break;
+                    case 15:    //Notificacion de errores en las consultas.
+                        if (mensaje != "ERROR_NO_DATOS")
+                        {
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { mensaje });
+                        }
+                        else
+                        {
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "No se han encontrado datos en la consulta" });
+                        }
+                        break;
+                    case 16:    //Notificacion de errores en las consultas.
+                        if (mensaje != "ERROR_NO_DATOS")
+                        {
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { mensaje });
+                        }
+                        else
+                        {
+                            this.Invoke(new DelegadorParaEcribirRepuesta(Mensaje_Respuesta), new object[] { "No se han encontrado datos en la consulta" });
+                        }
+                        break;
+                    case 17:    //Recibir mensaje del servidor diciendo si ha ganado, o ha perdido etc
+                        Forms[partidas[idPartida]].NotificarCambios2(mensaje);
                         break;
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Envia la consulta seleccionada por el usuario y los datos introducidos por este, devolviendo la respuesta.
         {
             try
             {
-                if (consulta1.Checked)
+                if (nameconsulta.Text != "")
                 {
-                    // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
-                    // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "3/0/" + nameconsulta.Text;
+                    if (consulta1.Checked)
+                    {
+                        // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
+                        // partidas donde ha jugado con los respectivos puntos del jugador
+                        string mensaje = "3/0/" + nameconsulta.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
+                        server.Send(msg);
+                    }
+                    if (consulta2.Checked)
+                    {
+                        // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
+                        // partidas donde ha jugado con los respectivos puntos del jugador
+                        string mensaje = "4/0/" + nameconsulta.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
+                        server.Send(msg);
+                    }
+                    if (consulta3.Checked)
+                    {
+                        // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
+                        // partidas donde ha jugado con los respectivos puntos del jugador
+                        string mensaje = "5/0/" + nameconsulta.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
+                        server.Send(msg);
+                    }
+                    if (consulta4.Checked)
+                    {
+                        // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
+                        // partidas donde ha jugado con los respectivos puntos del jugador
+                        string mensaje = "6/0/" + nameconsulta.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
+                        server.Send(msg);
+                    }
+                    if (consulta6.Checked)
+                    {
+                        string mensaje = "14/0/" + nameconsulta.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
+                        server.Send(msg);
+                    }
+                }
+                if ((consulta1.Checked || consulta2.Checked || consulta3.Checked || consulta4.Checked || consulta6.Checked) && (nameconsulta.Text == ""))
+                {
+                    label7.Text="Añade un nombre";
+                }
+                if (consulta5.Checked)
+                {
+                    string mensaje = "13/0";
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
                     server.Send(msg);
                 }
-                if (consulta2.Checked)
+                if ((fechaf.Text != "") && (fechai.Text != ""))
                 {
-                    // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
-                    // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "4/0/" + nameconsulta.Text;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
-                    server.Send(msg);
-                }
-                if (consulta3.Checked)
-                {
-                    // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
-                    // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "5/0/" + nameconsulta.Text;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
-                    server.Send(msg);
-                }
-                if (consulta4.Checked)
-                {
-                    // Esta consulta recibe el nombre de un jugador por teclado y devuelve el listado de
-                    // partidas donde ha jugado con los respectivos puntos del jugador
-                    string mensaje = "6/0/" + nameconsulta.Text;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
-                    server.Send(msg);
+                    string[] trozosi = fechai.Text.Split('/');
+                    string[] trozosf = fechaf.Text.Split('/');
+                    if ((trozosi.Length == 3) && (trozosf.Length == 3))
+                    {
+                        if (consulta7.Checked)
+                        {
+                            string mensaje = "15/0/" + fechai + "/" + fechaf;
+                            // Enviamos al servidor el nombre tecleado
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
+                            server.Send(msg);
+                        }
+                    }
+                    else
+                    {
+                        label7.Text="Por favor añada correctamente con el formato pedido";
+                    }
                 }
             }
             catch
@@ -327,13 +461,13 @@ namespace WindowsFormsApplication1
 
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Desconecta al usurario del servidor, invocando la funcion Desconectar.
         {
             Desconectar();
             Close();
         }
 
-        private void registrar_Click(object sender, EventArgs e)
+        private void registrar_Click(object sender, EventArgs e) //Resgistra en la base de datos el nombre y su contraseña relacionada, siempre que no exista ya otro usuario con el mismo nombre.
         {
             if ((textnombre.Text != "") && (textcontra.Text != ""))
             {
@@ -352,7 +486,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void entrar_Click(object sender, EventArgs e)
+        private void entrar_Click(object sender, EventArgs e) //Una vez introducidos el nombre y la contraseña, los compara con la base de datos. Si coinciden te deja entrar, si no, lo notifica.
         {
             if ((textnombre.Text != "") && (textcontra.Text != ""))
             {
@@ -371,7 +505,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void MostrarConectados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void MostrarConectados_CellContentClick(object sender, DataGridViewCellEventArgs e) //Al hacer click en una de las celdas del DataGridView, se selecciona al usuario que despues se invitará pulsandp otro boton. Pulsando en el mismo otra vez, se deselecciona.
         {
             if (MostrarConectados.CurrentCell.Value != null)
             {
@@ -380,7 +514,7 @@ namespace WindowsFormsApplication1
                 if (selecionado != name) //Solo permitimos selecionar las que no son el propio usuario
                 {
                     if (num_seleccionados == 3)
-                        MessageBox.Show("Has alcanzado el máximo permitido de jugadores");
+                        label7.Text="Has alcanzado el máximo permitido de jugadores";
 
                     else if ((selecionado != jugadores[0]) && (selecionado != jugadores[1]) && (selecionado != jugadores[2])) //Si aun no la hemos selecionado la añadimos
                     {
@@ -406,7 +540,8 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) //Muestra mensaje de seguridad antes de cerrar el form. Si dice que si, se cierr, si no, no lo cierra.
+
         {
             DialogResult dialog = MessageBox.Show("¿Estás seguro de cerrar el programa?","Exit",MessageBoxButtons.OK);
             if (dialog == DialogResult.OK)
@@ -432,17 +567,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Invitar_Click(object sender, EventArgs e)
+        private void Invitar_Click(object sender, EventArgs e) //Invita a los jugadores seleccionados a jugar una nueva partida
         {
             // Enviamos al servidor el nombre del usuario más sus invitados
             string mensaje = "7/0/" + name + ",";
@@ -457,12 +582,58 @@ namespace WindowsFormsApplication1
                 server.Send(msg);
             }
             else
-                MessageBox.Show("Debes de seleccionar a un jugador");
+                label7.Text="Debes de seleccionar a un jugador";
 
             //Limpiamos el vector de jugadores
             num_seleccionados = 0;
             for (int i = 0; i < 3; i++)
                 jugadores[i] = "";
+        }
+
+        private void darbaja_Click(object sender, EventArgs e) //Elimina de la base de datos la contraseña y el nombre de usuario introduccidos por teclado, simpre que este existan.
+        {
+            if ((textnombre.Text != "") && (textcontra.Text != ""))
+            {
+                Conectar();
+                // El usuario se quiere dar de baja
+                string mensaje = "10/0/" + textnombre.Text + "/" + textcontra.Text;
+                name = textnombre.Text;
+                password = textcontra.Text;
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje); //Envio un vector de bytes
+                server.Send(msg);
+            }
+            else
+            {
+                MessageBox.Show("No te has podido dar de baja, debes introducir nombre y contrasena validos.");
+            }
+        }
+
+        //Instrucciones
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            Form5 f5 = new Form5();
+            f5.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
