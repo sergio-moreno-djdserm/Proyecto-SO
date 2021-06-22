@@ -59,4 +59,4 @@
 
 - Versión 6 comunicada por Sergio
 
-- Enlace url V6: https://youtu.be/d0WCViyhffE
+- Enlace url V6: https://www.youtube.com/watch?v=XYeZyjysx_E
